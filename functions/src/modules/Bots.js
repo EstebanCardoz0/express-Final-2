@@ -22,7 +22,7 @@ class Bot {
     this.xp = 0;
     this.rank = 1;
     this.modules = [];
-    this.baseCapacity = proccesing * 0.6 + memory * 0.4;
+    this.baseCapacity = processing * 0.6 + memory * 0.4;
   }
 }
 
