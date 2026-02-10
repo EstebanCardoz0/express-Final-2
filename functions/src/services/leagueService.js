@@ -1,6 +1,6 @@
 import { obtenerDatos } from "../repositories/leagueRepository.js";
 
-const getLeagues = async () => {
+const getLeaguet= async () => {
   return obtenerDatos();
 }
 
