@@ -3,7 +3,16 @@ import fs from 'fs/promises';
 
 class BotService {
 
-   botRepo = new BotRepository();
+  botRepo = new BotRepository();
+
+  constructor() {
+
+  }
+
+  createBot() {
+
+  }
+
 
 
 
