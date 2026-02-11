@@ -2,12 +2,13 @@ import { BotRepository } from "../repositories/botRepository.js";
 import { contador, acumulador } from "../utils.js";
 import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
 import { Bot } from "../modules/Bots.js";
+import { EntityNotFoundError } from './../../errors/EntityNotFoundError.js'
 
 class BotService {
   botRepo = new BotRepository();
   conti = contador();
 
-  constructor() {}
+  constructor() { }
 
   createBot(name, generation, processing, memory, modules) {
     if (processing < 10 || processing > 200 || memory < 10 || memory > 200) {
@@ -30,6 +31,18 @@ class BotService {
       );
       return this.botRepo.createBot(nbot);
     }
+  }
+
+  async getBotById(id) {
+
+    const busqueda = await this.botRepo.getBotById(id);
+
+    if (!busqueda) {
+      throw new EntityNotFoundError("Robot no encontrado");
+    } else {
+      return busqueda;
+    }
+
   }
 }
 
