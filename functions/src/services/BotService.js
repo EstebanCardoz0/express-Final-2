@@ -2,13 +2,13 @@ import { BotRepository } from "../repositories/botRepository.js";
 import { contador, acumulador } from "../utils.js";
 import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
 import { Bot } from "../modules/Bots.js";
-import { EntityNotFoundError } from './../../errors/EntityNotFoundError.js'
+import { EntityNotFoundError } from "./../../errors/EntityNotFoundError.js";
 
 class BotService {
   botRepo = new BotRepository();
   conti = contador();
 
-  constructor() { }
+  constructor() {}
 
   createBot(name, generation, processing, memory, modules) {
     if (processing < 10 || processing > 200 || memory < 10 || memory > 200) {
@@ -34,7 +34,6 @@ class BotService {
   }
 
   async getBotById(id) {
-
     const busqueda = await this.botRepo.getBotById(id);
 
     if (!busqueda) {
@@ -42,7 +41,22 @@ class BotService {
     } else {
       return busqueda;
     }
+  }
 
+  async updateBot(id, data) {
+    await this.getBotById(id);
+
+    if (data.processing != undefined) {
+      if (data.processing < 10 || data.processing > 200) {
+        throw new OutOfRangeError();
+      }
+    }
+    if (data.memory != undefined) {
+      if (data.memory < 10 || data.memory > 200) {
+        throw new OutOfRangeError();
+      }
+    }
+    return this.botRepo.updateBot(id, data);
   }
 }
 
