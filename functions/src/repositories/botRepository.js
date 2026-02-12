@@ -4,10 +4,6 @@ class BotRepository {
 
   url = './league.json';
 
-  constructor() {
-
-  }
-
   async readAndParse() {
     return JSON.parse(await fs.readFile(this.url));
   }
