@@ -5,8 +5,10 @@ import { Bot } from "../modules/Bots.js";
 import { EntityNotFoundError } from "./../../errors/EntityNotFoundError.js";
 
 class BotService {
-  botRepo = new BotRepository();
-  conti = contador();
+  constructor(botRepo = new BotRepository()) {
+    this.botRepo = botRepo;
+    this.conti = contador();
+  }
 
   createBot(name, generation, processing, memory, modules) {
     if (processing < 10 || processing > 200 || memory < 10 || memory > 200) {
@@ -28,7 +30,6 @@ class BotService {
       memory,
     );
     return this.botRepo.createBot(nbot);
-
   }
 
   async getBotById(id) {
@@ -43,7 +44,7 @@ class BotService {
   async updateBot(id, data) {
     await this.getBotById(id);
 
-    if (data.processing != undefined) {
+    if (data.processing !== undefined) {
       if (data.processing < 10 || data.processing > 200) {
         throw new OutOfRangeError();
       }
