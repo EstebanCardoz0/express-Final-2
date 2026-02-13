@@ -1,0 +1,11 @@
+import { Router } from "express";
+import { BotController } from "../controllers/BotController.js";
+
+const router = new Router();
+const botCon = new BotController();
+
+router.post("/", botCon.createBot);
+router.get("/:id", botCon.getBotById);
+router.put("/:id", botCon.updateBot);
+
+export { router };

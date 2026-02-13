@@ -1,14 +1,14 @@
 import express from 'express'
-import { getAllLeagues } from './src/modules/league.js';
+import { router } from './src/routes/botRoutes.js';
 
 const app = express();
 const PORT = 3000;
 
-
-app.get("/", getAllLeagues);
+app.use(express.json());
+app.use("/bots", router);
 
 app.listen(PORT, () => {
-  console.log("server correndo")
+  console.log("server corriendo")
 });
 
 

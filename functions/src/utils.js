@@ -11,7 +11,6 @@ function contador() {
   };
 }
 
-export { contador };
 
 function acumulador(valorInicial = 0) {
   let total = valorInicial;

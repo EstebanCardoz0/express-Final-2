@@ -2,7 +2,7 @@ import fs from "fs/promises";
 
 class BotRepository {
 
-  url = './league.json';
+  url = './functions/src/repositories/league.json';
 
   async readAndParse() {
     return JSON.parse(await fs.readFile(this.url));

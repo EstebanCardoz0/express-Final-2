@@ -1,7 +1,21 @@
 {
-"bots": [],
-"tracks": [],
-"logicTests": [],
-"trainings": [],
-"duels": []
+  "bots": [
+    {
+      "id": 1,
+      "name": "Bender",
+      "generation": "MK-II",
+      "processing": 50,
+      "memory": 100,
+      "battery": 100,
+      "load": 0,
+      "xp": 0,
+      "rank": 1,
+      "modules": ["doblado", "humor"],
+      "baseCapacity": 70
+    }
+  ],
+  "tracks": [],
+  "logicTests": [],
+  "trainings": [],
+  "duels": []
 }

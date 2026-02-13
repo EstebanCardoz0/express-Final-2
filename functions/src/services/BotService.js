@@ -29,6 +29,7 @@ class BotService {
       processing,
       memory,
     );
+    nbot.modules = modules;
     return this.botRepo.createBot(nbot);
   }
 
