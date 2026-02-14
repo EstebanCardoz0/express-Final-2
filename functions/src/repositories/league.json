@@ -1,21 +1,3 @@
-{
-  "bots": [
-    {
-      "id": 1,
-      "name": "Bender",
-      "generation": "MK-II",
-      "processing": 50,
-      "memory": 100,
-      "battery": 100,
-      "load": 0,
-      "xp": 0,
-      "rank": 1,
-      "modules": ["doblado", "humor"],
-      "baseCapacity": 70
-    }
-  ],
-  "tracks": [],
-  "logicTests": [],
-  "trainings": [],
-  "duels": []
-}
+{"bots":[{"id":1,"name":"Bender","generation":"MK-II","processing":50,"memory":100,"battery":100,"load":0,"xp":0,"rank":1,"modules":["doblado","humor"],"baseCapacity":70},{"id":1,"name":"Bot-X Defender","generation":3,"processing":150,"memory":120,"battery":100,"load":0,"xp":0,"rank":1,"modules":[{"name":"Shield Module","weight":25},
+{"name":"Laser Cannon","weight":30},{"name":"Radar System","weight":20},{"name":"Power Core","weight":15}],"baseCapacity":138},{"id":1,"name":"Bot-X Defender","generation":3,"processing":150,"memory":120,"battery":100,"load":0,"xp":0,"rank":1,"modules":[{"name":"Shield Module","weight":25},{"name":"Laser Cannon","weight":30},
+{"name":"Radar System","weight":20}],"baseCapacity":138},{"id":1,"name":"Generic Bot","generation":3,"processing":100,"memory":100,"battery":100,"load":0,"xp":0,"rank":1,"modules":[{"name":"Standard Module","weight":30},{"name":"Power Core","weight":25}],"baseCapacity":100}],"tracks":[],"logicTests":[],"trainings":[],"duels":[]}

@@ -1,3 +1,5 @@
+import fs from "fs/promises";
+
 function contador() {
   let cont = 0;
 
@@ -10,7 +12,6 @@ function contador() {
     },
   };
 }
-
 
 function acumulador(valorInicial = 0) {
   let total = valorInicial;
@@ -27,4 +28,9 @@ function acumulador(valorInicial = 0) {
   };
 }
 
-export { contador, acumulador };
+const saveLog = async (log) => {
+  const timeStamp = new Date().toISOString();
+  await fs.appendFile("logger.txt", timeStamp + " - " + log + "\n");
+};
+
+export { contador, acumulador, saveLog };
