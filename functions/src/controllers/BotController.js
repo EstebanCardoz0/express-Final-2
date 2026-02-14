@@ -1,6 +1,7 @@
 import { EntityNotFoundError } from "../../errors/EntityNotFoundError.js";
 import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
 import { BotService } from "../services/BotService.js";
+import { saveLog } from "../utils.js";
 
 class BotController {
   constructor(botSer = new BotService()) {
@@ -21,6 +22,8 @@ class BotController {
       if (error instanceof OutOfRangeError) {
         res.status(400).json({ error: error.message });
       } else {
+        await saveLog(error);
+
         res.status(500).json({ error: "error del server" });
       }
     }
@@ -35,6 +38,8 @@ class BotController {
       if (error instanceof EntityNotFoundError) {
         res.status(404).json({ error: error.message });
       } else {
+        await saveLog(error);
+
         res.status(500).json({ error: "error del server" });
       }
     }
@@ -59,6 +64,7 @@ class BotController {
       } else if (error instanceof OutOfRangeError) {
         res.status(400).json({ error: error.message });
       } else {
+        await saveLog(error);
         res.status(500).json({ error: "Error del server" });
       }
     }
