@@ -23,6 +23,16 @@ class Bot {
     this.baseCapacity = processing * 0.6 + memory * 0.4;
   }
 
+  static fromData(data) {
+    const bot = new Bot(data.id, data.name, data.generation, data.processing, data.memory);
+    if (data.battery !== undefined) bot.battery = data.battery;
+    if (data.load !== undefined) bot.load = data.load;
+    if (data.xp !== undefined) bot.xp = data.xp;
+    if (data.modules !== undefined) bot.modules = data.modules;
+    if (data.baseCapacity !== undefined) bot.baseCapacity = data.baseCapacity;
+    return bot;
+  }
+
   get rank() {
     if (this.xp < 100) return 1;
     if (this.xp < 300) return 2;

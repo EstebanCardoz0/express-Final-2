@@ -14,14 +14,7 @@ class BotRepository {
     const botData = data.bots.find((d) => d.id === Number(id));
     if (!botData) return null;
     
-    const bot = new Bot(botData.id, botData.name, botData.generation, botData.processing, botData.memory);
-    bot.battery = botData.battery;
-    bot.load = botData.load;
-    bot.xp = botData.xp;
-    bot.modules = botData.modules;
-    bot.baseCapacity = botData.baseCapacity;
-    
-    return bot;
+    return Bot.fromData(botData);
   };
 
   async createBot(bot) {
@@ -35,8 +28,10 @@ class BotRepository {
     const botIndex = data.bots.findIndex((d) => d.id === Number(id));
     if (botIndex > -1) {
       data.bots[botIndex] = { ...data.bots[botIndex], ...datos };
+      await fs.writeFile(this.url, JSON.stringify(data));
+      return Bot.fromData(data.bots[botIndex]);
     }
-    return fs.writeFile(this.url, JSON.stringify(data));
+    return null;
   }
 
   async deleteBot(id) {
