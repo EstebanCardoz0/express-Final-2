@@ -55,7 +55,8 @@ class BotService {
         throw new OutOfRangeError();
       }
     }
-    return this.botRepo.updateBot(id, data);
+    await this.botRepo.updateBot(id, data);
+    return this.getBotById(id);
   }
 
   async deleteBot(id) {

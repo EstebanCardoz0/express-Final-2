@@ -33,14 +33,18 @@ class BotController {
   updateBot = async (req, res, next) => {
     try {
       const { id } = req.params;
-      const { name, generation, processing, memory, modules } = req.body;
-      const nBot = await this.botSer.updateBot(id, {
-        name,
-        generation,
-        processing,
-        memory,
-        modules,
-      });
+      const updates = {};
+      
+      if (req.body.name !== undefined) updates.name = req.body.name;
+      if (req.body.generation !== undefined) updates.generation = req.body.generation;
+      if (req.body.processing !== undefined) updates.processing = req.body.processing;
+      if (req.body.memory !== undefined) updates.memory = req.body.memory;
+      if (req.body.modules !== undefined) updates.modules = req.body.modules;
+      if (req.body.xp !== undefined) updates.xp = req.body.xp;
+      if (req.body.battery !== undefined) updates.battery = req.body.battery;
+      if (req.body.load !== undefined) updates.load = req.body.load;
+      
+      const nBot = await this.botSer.updateBot(id, updates);
 
       res.status(200).json(nBot);
     } catch (error) {
