@@ -33,4 +33,8 @@ const saveLog = async (log) => {
   await fs.appendFile("logger.txt", timeStamp + " - " + log + "\n");
 };
 
-export { contador, acumulador, saveLog };
+const readAndParse = async (url) => {
+  return JSON.parse(await fs.readFile(url));
+};
+
+export { contador, acumulador, saveLog, readAndParse  };

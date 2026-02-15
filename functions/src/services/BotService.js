@@ -1,7 +1,7 @@
 import { BotRepository } from "../repositories/BotRepository.js";
 import { contador, acumulador } from "../utils.js";
 import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
-import { Bot } from "../modules/Bots.js";
+import { Bot } from "../modules/Bot.js";
 import { EntityNotFoundError } from "./../../errors/EntityNotFoundError.js";
 
 class BotService {

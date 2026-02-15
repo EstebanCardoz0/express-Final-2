@@ -1,11 +1,10 @@
 import fs from "fs/promises";
+import { readAndParse } from "../utils";
 
 class BotRepository {
   url = "./functions/src/repositories/league.json";
 
-  async readAndParse() {
-    return JSON.parse(await fs.readFile(this.url));
-  }
+  readAndParse = readAndParse(url);
 
   getBotById = async (id) => {
     const data = await this.readAndParse();
