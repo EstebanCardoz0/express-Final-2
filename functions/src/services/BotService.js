@@ -57,6 +57,15 @@ class BotService {
     }
     return this.botRepo.updateBot(id, data);
   }
+
+  async deleteBot(id) {
+  const   toDelete = await this.getBotById(id);
+    if (toDelete !== undefined) {
+      return this.botRepo.deleteBot(id);
+    } else {
+      throw new EntityNotFoundError("Bot a borrar no encontrado");
+    }
+  }
 }
 
 export { BotService };

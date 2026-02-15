@@ -47,6 +47,16 @@ class BotController {
       next(error);
     }
   };
+
+  deleteBot = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      await this.botSer.deleteBot(id);
+      res.status(204).json() ;
+    } catch (error) {
+      next(error);
+    }
+  };
 }
 
 export { BotController };

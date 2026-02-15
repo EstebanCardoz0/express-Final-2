@@ -7,5 +7,6 @@ const botCon = new BotController();
 router.post("/", botCon.createBot);
 router.get("/:id", botCon.getBotById);
 router.put("/:id", botCon.updateBot);
+router.delete("/:id", botCon.deleteBot);
 
 export { router };

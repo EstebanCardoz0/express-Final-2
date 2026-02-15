@@ -26,6 +26,13 @@ class BotRepository {
     }
     return fs.writeFile(this.url, JSON.stringify(data));
   }
+
+  async deleteBot(id) {
+    const data = await this.readAndParse();
+    const withDelete = data.bots.filter((f) => f.id !== Number(id));
+    data.bots = withDelete;
+    return fs.writeFile(this.url, JSON.stringify(data));
+  }
 }
 
 export { BotRepository };
