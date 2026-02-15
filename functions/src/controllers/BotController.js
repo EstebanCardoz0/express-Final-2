@@ -1,13 +1,10 @@
-import { EntityNotFoundError } from "../../errors/EntityNotFoundError.js";
-import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
 import { BotService } from "../services/BotService.js";
-import { saveLog } from "../utils.js";
 
 class BotController {
   constructor(botSer = new BotService()) {
     this.botSer = botSer;
   }
-  createBot = async (req, res) => {
+  createBot = async (req, res, next) => {
     try {
       const { name, generation, processing, memory, modules } = req.body;
       const newBot = await this.botSer.createBot(
@@ -19,33 +16,21 @@ class BotController {
       );
       res.status(201).json(newBot);
     } catch (error) {
-      if (error instanceof OutOfRangeError) {
-        res.status(400).json({ error: error.message });
-      } else {
-        await saveLog(error);
-
-        res.status(500).json({ error: "error del server" });
-      }
+      next(error);
     }
   };
 
-  getBotById = async (req, res) => {
+  getBotById = async (req, res, next) => {
     try {
       const { id } = req.params;
       const boti = await this.botSer.getBotById(id);
       res.status(200).json(boti);
     } catch (error) {
-      if (error instanceof EntityNotFoundError) {
-        res.status(404).json({ error: error.message });
-      } else {
-        await saveLog(error);
-
-        res.status(500).json({ error: "error del server" });
-      }
+      next(error);
     }
   };
 
-  updateBot = async (req, res) => {
+  updateBot = async (req, res, next) => {
     try {
       const { id } = req.params;
       const { name, generation, processing, memory, modules } = req.body;
@@ -59,14 +44,7 @@ class BotController {
 
       res.status(200).json(nBot);
     } catch (error) {
-      if (error instanceof EntityNotFoundError) {
-        res.status(404).json({ error: error.message });
-      } else if (error instanceof OutOfRangeError) {
-        res.status(400).json({ error: error.message });
-      } else {
-        await saveLog(error);
-        res.status(500).json({ error: "Error del server" });
-      }
+      next(error);
     }
   };
 }
