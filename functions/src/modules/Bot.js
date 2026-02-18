@@ -9,7 +9,6 @@ class Bot {
   xp;
   rank;
   modules;
-  baseCapacity;
 
   constructor(id, name, generation, processing, memory) {
     this.id = id;
@@ -22,8 +21,13 @@ class Bot {
     this.xp = 0;
     this.rank = 1;
     this.modules = [];
-    this.baseCapacity = processing * 0.6 + memory * 0.4;
   }
+
+  get baseCapacity() {
+    return this.processing * 0.6 + this.memory * 0.4;
+  }
+
+
 }
 
 export { Bot };

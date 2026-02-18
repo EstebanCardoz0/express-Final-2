@@ -1,5 +1,5 @@
 import { BotRepository } from "../repositories/BotRepository.js";
-import { contador, acumulador } from "../utils.js";
+import { contador, acumulador, updateRank } from "../utils.js";
 import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
 import { Bot } from "../modules/Bot.js";
 import { EntityNotFoundError } from "./../../errors/EntityNotFoundError.js";
@@ -22,6 +22,7 @@ class BotService {
       throw new OutOfRangeError("error. El total de peso es mayor a 100");
     }
     this.conti.aumentar();
+
     const nbot = new Bot(
       this.conti.valorActual(),
       name,
@@ -31,6 +32,10 @@ class BotService {
     );
     nbot.modules = modules;
     return this.botRepo.createBot(nbot);
+  }
+
+  async getAllBots() {
+    return await this.botRepo.getAllBots();
   }
 
   async getBotById(id) {
@@ -55,16 +60,42 @@ class BotService {
         throw new OutOfRangeError();
       }
     }
+    if (data.modules !== undefined) {
+      let contadorPeso = acumulador();
+      for (const p of data.modules) {
+        contadorPeso.acumular(p.weight);
+      }
+      if (contadorPeso.obtenerTotal() > 100) {
+        throw new OutOfRangeError("error. peso mayor a 100");
+      }
+    }
     return this.botRepo.updateBot(id, data);
   }
 
+  async updateBotModules(id, modules) {
+    let contadorPeso = acumulador();
+    for (const p of modules) {
+      contadorPeso.acumular(p.weight);
+    }
+    if (contadorPeso.obtenerTotal() > 100) {
+      throw new OutOfRangeError("error. El total de peso es mayor a 100");
+    }
+    await this.updateBot(id, { modules });
+    return this.getBotById(id);
+  }
+
   async deleteBot(id) {
-  const   toDelete = await this.getBotById(id);
+    const toDelete = await this.getBotById(id);
     if (toDelete !== undefined) {
       return this.botRepo.deleteBot(id);
     } else {
       throw new EntityNotFoundError("Bot a borrar no encontrado");
     }
+  }
+
+  addXpAndUpdateRank(bot, xpAmount) {
+    bot.xp += xpAmount;
+    updateRank(bot);
   }
 }
 

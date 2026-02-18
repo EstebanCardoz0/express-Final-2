@@ -37,4 +37,16 @@ const readAndParse = async (url) => {
   return JSON.parse(await fs.readFile(url));
 };
 
-export { contador, acumulador, saveLog, readAndParse  };
+
+const updateRank = (bot) => {
+  let xpNecesaria = 50 + bot.rank ** 2 * 10;
+  
+  while (bot.xp >= xpNecesaria) {
+    bot.rank++;
+    bot.xp -= xpNecesaria;
+    xpNecesaria = 50 + bot.rank ** 2 * 10;
+  }
+};
+
+
+export { contador, acumulador, saveLog, readAndParse, updateRank, };

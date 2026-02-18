@@ -20,6 +20,14 @@ class BotController {
     }
   };
 
+  getAllBots = async (req, res, next) => {
+    try {
+      res.status(200).json(await this.botSer.getAllBots());
+    } catch (error) {
+      next(error);
+    }
+  };
+
   getBotById = async (req, res, next) => {
     try {
       const { id } = req.params;
@@ -48,11 +56,22 @@ class BotController {
     }
   };
 
+  updateBotModules = async (req, res, next) => {
+    try {
+      const { id } = req.params;
+      const { modules } = req.body;
+      const bot = await this.botSer.updateBotModules(id, modules);
+      res.status(200).json(bot);
+    } catch (error) {
+      next(error);
+    }
+  };
+
   deleteBot = async (req, res, next) => {
     try {
       const { id } = req.params;
       await this.botSer.deleteBot(id);
-      res.status(204).json() ;
+      res.status(204).json();
     } catch (error) {
       next(error);
     }

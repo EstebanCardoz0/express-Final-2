@@ -1,5 +1,6 @@
 import express from "express";
-import { router } from "./src/routes/botRoutes.js";
+import { router as botRoutes } from "./src/routes/botRoutes.js";
+import { router as trackRoutes } from "./src/routes/trackRoutes.js";
 import { saveLog } from "./src/utils.js";
 import { EntityNotFoundError } from "./errors/EntityNotFoundError.js";
 import { OutOfRangeError } from "./errors/OutOfRangeError.js";
@@ -15,7 +16,8 @@ const loggerMiddleware = async (req, res, next) => {
 app.use(loggerMiddleware);
 
 app.use(express.json());
-app.use("/bots", router);
+app.use("/bots", botRoutes);
+app.use("/tracks", trackRoutes);
 
 const errorHandler = async (err, req, res, next) => {
   await saveLog(`${err}`);
