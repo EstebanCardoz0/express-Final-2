@@ -12,7 +12,8 @@ class LogicTestRepository {
       throw new DuplicateError("Ya existe un logicTest con ese id");
     }
     data.logicTests.push(logicTest);
-    return fs.writeFile(this.url, JSON.stringify(data, null, 2));
+    await fs.writeFile(this.url, JSON.stringify(data, null, 2));
+    return logicTest;
   }
 
   async getLogicTestById(id) {

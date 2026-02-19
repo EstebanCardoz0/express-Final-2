@@ -12,7 +12,8 @@ class TrainingRepository {
       throw new OutOfRangeError("Ya existe un training con ese ID");
     }
     data.trainings.push(training);
-    return fs.writeFile(this.url, JSON.stringify(data, null, 2));   
+    await fs.writeFile(this.url, JSON.stringify(data, null, 2));   
+    return training;
   }
 
   async getTrainingById(id) {
