@@ -1,10 +1,12 @@
-import { LogicTest } from "../modules/LogicTest";
+import { LogicTest } from "../modules/LogicTest.js";
 import { AttemptService } from "../services/AttemptService.js";
 import { LogicTestService } from "../services/LogicTestService.js";
 
 class LogicTestController {
-
-  constructor(logicTestServi = new LogicTestService(), attemptServi = new AttemptService()) {
+  constructor(
+    logicTestServi = new LogicTestService(),
+    attemptServi = new AttemptService(),
+  ) {
     this.logicTestServi = logicTestServi;
     this.attemptServi = attemptServi;
   }
@@ -17,20 +19,31 @@ class LogicTestController {
     } catch (error) {
       next(error);
     }
-  }
+  };
 
   createLogicTest = async (req, res, next) => {
-
     try {
-      const { title, difficulty, timeLimit, baseRewardFormula, penaltyFormula } = req.body;
-      const logic = new LogicTest(null, title, difficulty, timeLimit, baseRewardFormula, penaltyFormula);
+      const {
+        title,
+        difficulty,
+        timeLimit,
+        baseRewardFormula,
+        penaltyFormula,
+      } = req.body;
+      const logic = new LogicTest(
+        null,
+        title,
+        difficulty,
+        timeLimit,
+        baseRewardFormula,
+        penaltyFormula,
+      );
       await this.logicTestServi.createLogicTest(logic);
       res.status(201).json(logic);
     } catch (error) {
       next(error);
     }
-
-  }
+  };
   // POST /logic-tests/:logicTestId/attempt
   attemptLogicTest = async (req, res, next) => {
     try {
@@ -39,13 +52,11 @@ class LogicTestController {
 
       const atte = { botId, logicTestId, timeUsed };
       await this.attemptServi.createAttempt(atte);
-      res.status(200).json(atte);
+      res.status(200).json({ result: atte.result });
     } catch (error) {
       next(error);
     }
-  }
-
-
-};
+  };
+}
 
 export { LogicTestController };

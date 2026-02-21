@@ -5,15 +5,15 @@ import fs from "fs/promises";
 class AttemptRepository {
   url = "./functions/src/repositories/league.json";
 
-  async getAttemptsById(id) {
+  async getAttemptById(id) {
     const data = await readAndParse(this.url);
     const atte = await data.attempts.find((a) => a.id === Number(id));
     return atte;
   }
 
-  async createAttempts(attempt) {
+  async createAttempt(attempt) {
     const data = await readAndParse(this.url);
-    const validate = await this.getAttemptsById(attempt.id);
+    const validate = await this.getAttemptById(attempt.id);
     if (validate) {
       throw new DuplicateError("Ya existe attempt con ese id");
     }

@@ -37,13 +37,13 @@ class AttemptService {
     // Validación de tiempo
     if (timeUsed > logic.timeLimit) {
       atte.result = "failed";
-      return await this.atteRepo.createAttempts(atte);
+      return await this.atteRepo.createAttempt(atte);
     }
 
     // Validación de memoria
     if (bot.memory < (logic.difficulty * 10)) {
       atte.result = "failed";
-      return await this.atteRepo.createAttempts(atte);
+      return await this.atteRepo.createAttempt(atte);
     }
 
     // Cálculo de penalización
@@ -59,12 +59,12 @@ class AttemptService {
     // Validación de batería
     if (bot.battery < penaltyTotal) {
       atte.result = "failed";
-      return await this.atteRepo.createAttempts(atte);
+      return await this.atteRepo.createAttempt(atte);
     }
 
     // Si pasa todas las validaciones, es éxito
     atte.result = "success";
-    return await this.atteRepo.createAttempts(atte);
+    return await this.atteRepo.createAttempt(atte);
 
   }
 
