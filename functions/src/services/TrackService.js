@@ -2,12 +2,10 @@ import { EntityNotFoundError } from "../../errors/EntityNotFoundError.js";
 import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
 import { Track } from "../modules/Track.js";
 import { TrackRepository } from "../repositories/TrackRepository.js";
-import { contador } from "../utils.js";
 
 class TrackService {
   constructor(trackRepo = new TrackRepository()) {
     this.trackRepo = trackRepo;
-    this.contador = contador();
   }
 
   async getAllTracks() {
@@ -15,7 +13,7 @@ class TrackService {
   }
 
   async getTrackById(id) {
-    const track = this.trackRepo.getTrackById(id);
+    const track = await this.trackRepo.getTrackById(id);
     if (!track) {
       throw new EntityNotFoundError("Track no encontrado");
     }
@@ -34,9 +32,11 @@ class TrackService {
         "error. La complexity debe tener un valor entre 1 y 10 inclusive",
       );
     }
-    this.contador.aumentar();
+    const tracks = await this.trackRepo.getAllTracks();
+    const { getNextId } = await import("../utils.js");
+    const nextId = getNextId(tracks);
     const nuevoTrack = new Track(
-      this.contador.valorActual(),
+      nextId,
       name,
       complexity,
       length,

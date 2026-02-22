@@ -1,12 +1,10 @@
 import { EntityNotFoundError } from "../../errors/EntityNotFoundError.js";
 import { LogicTest } from "../modules/LogicTest.js";
 import { LogicTestRepository } from "../repositories/LogicTestRepository.js";
-import { contador } from "../utils.js";
 
 class LogicTestService {
   constructor(logicTestRepo = new LogicTestRepository()) {
     this.logicTestRepo = logicTestRepo;
-    this.contador = contador();
   }
 
   async getLogicTestById(id) {
@@ -24,16 +22,17 @@ class LogicTestService {
     baseRewardFormula,
     penaltyFormula,
   ) {
-    this.contador.aumentar();
+    const logicTests = await this.logicTestRepo.getAllLogicTests();
+    const { getNextId } = await import("../utils.js");
+    const nextId = getNextId(logicTests);
     const nLogic = new LogicTest(
-      this.contador.valorActual(),
+      nextId,
       title,
       difficulty,
       timeLimit,
       baseRewardFormula,
       penaltyFormula,
     );
-
     return this.logicTestRepo.createLogicTest(nLogic);
   }
 }

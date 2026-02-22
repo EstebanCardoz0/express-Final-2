@@ -40,3 +40,125 @@
 2026-02-15T03:47:49.060Z - DELETE /bots/2
 2026-02-15T03:50:03.303Z - DELETE /bots/2
 2026-02-15T03:50:03.309Z - EntityNotFound: Robot no encontrado
+2026-02-21T15:48:10.364Z - GET /
+2026-02-21T15:49:42.524Z - GET /
+2026-02-21T15:50:08.349Z - POST /bots
+2026-02-21T15:50:08.370Z - DuplicateError: Ya existe un bot con ese id, ponle otro
+2026-02-21T15:51:46.259Z - GET /
+2026-02-21T15:51:54.667Z - POST /bots
+2026-02-21T15:51:54.687Z - DuplicateError: Ya existe un bot con ese id, ponle otro
+2026-02-21T18:08:30.021Z - POST /bots
+2026-02-21T18:10:53.254Z - GET /bots/1
+2026-02-21T18:11:40.701Z - GET /bots/
+2026-02-21T18:13:03.464Z - GET /bots/1
+2026-02-21T18:14:11.339Z - GET /bots/1
+2026-02-21T18:15:28.986Z - GET /bots/1
+2026-02-21T18:15:46.012Z - GET /bots/1
+2026-02-21T18:16:12.168Z - GET /bots/1
+2026-02-21T18:16:44.424Z - GET /bots/
+2026-02-21T18:18:00.976Z - POST /bots
+2026-02-21T18:18:28.228Z - GET /bots/6
+2026-02-21T18:18:33.895Z - GET /bots/
+2026-02-21T18:19:20.867Z - PUT /bots/11111
+2026-02-21T18:19:20.882Z - EntityNotFound: Robot no encontrado
+2026-02-21T18:19:41.440Z - PUT /bots/6
+2026-02-21T18:19:41.444Z - EntityNotFound: No se encontró el bot a actualizar
+2026-02-21T18:19:46.076Z - PUT /bots/6
+2026-02-21T18:19:46.079Z - EntityNotFound: No se encontró el bot a actualizar
+2026-02-21T18:21:26.707Z - PUT /bots/6
+2026-02-21T18:21:26.710Z - EntityNotFound: No se encontró el bot a actualizar
+2026-02-21T18:28:12.783Z - PUT /bots/6
+2026-02-21T18:28:12.786Z - EntityNotFound: No se encontró el bot a actualizar
+2026-02-21T18:29:52.649Z - PUT /bots/6
+2026-02-21T18:30:31.075Z - POST /bots
+2026-02-21T18:30:40.294Z - DELETE /bots/7
+2026-02-21T18:31:00.019Z - GET /bots/
+2026-02-21T18:31:52.805Z - GET /tracks/
+2026-02-21T18:32:03.166Z - GET /tracks/1
+2026-02-21T18:32:38.517Z - POST /tracks
+2026-02-21T18:32:51.440Z - GET /tracks/1
+2026-02-21T18:32:57.788Z - GET /tracks/2
+2026-02-21T18:33:17.228Z - GET /tracks/
+2026-02-21T18:35:31.882Z - GET /tracks/1
+2026-02-21T18:35:35.508Z - GET /tracks/11
+2026-02-21T18:35:35.511Z - EntityNotFound: Track no encontrado
+2026-02-21T18:35:49.979Z - GET /tracks/2
+2026-02-21T18:35:49.980Z - EntityNotFound: Track no encontrado
+2026-02-21T18:35:52.615Z - GET /tracks/1
+2026-02-21T18:36:25.096Z - GET /tracks/1
+2026-02-21T18:38:04.487Z - GET /tracks/
+2026-02-21T18:39:34.431Z - GET /tracks/
+2026-02-21T18:39:57.380Z - POST /tracks/
+2026-02-21T18:40:43.841Z - POST /tracks/
+2026-02-21T18:42:44.287Z - DELETE /bots/2
+2026-02-21T18:51:16.469Z - GET /bots/2
+2026-02-21T18:51:16.477Z - EntityNotFound: Robot no encontrado
+2026-02-21T18:51:21.034Z - GET /bots/3
+2026-02-21T18:51:29.560Z - POST /tracks/1/train/3
+2026-02-21T18:51:29.562Z - TypeError: Cannot destructure property 'id' of 'req.body' as it is undefined.
+2026-02-21T18:58:28.295Z - POST /tracks/1/train/3
+2026-02-21T18:58:28.310Z - ReferenceError: readAndParse is not defined
+2026-02-21T19:01:07.575Z - POST /tracks/1/train/3
+2026-02-21T19:02:10.381Z - GET /bots/3
+2026-02-21T19:12:22.140Z - GET /tracks/
+2026-02-21T19:12:29.378Z - GET /tracks/1
+2026-02-21T19:14:45.617Z - GET /logicTests/1
+2026-02-21T19:14:45.622Z - EntityNotFound: No se encontró logicTest con ese Id
+2026-02-21T19:17:24.716Z - POST /logicTests/
+2026-02-21T19:17:24.726Z - TypeError: this.logicTestRepo.getAllLogicTests is not a function
+2026-02-21T19:21:36.787Z - POST /logicTests/
+2026-02-21T19:35:53.784Z - POST /logicTests/
+2026-02-21T19:36:45.809Z - POST /logicTests/
+2026-02-21T19:37:02.166Z - POST /logicTests/
+2026-02-21T19:37:10.567Z - GET /logicTests/2
+2026-02-21T19:37:14.593Z - GET /logicTests/222
+2026-02-21T19:37:14.596Z - EntityNotFound: No se encontró logicTest con ese Id
+2026-02-21T19:37:19.302Z - GET /logicTests/
+2026-02-21T19:37:24.312Z - GET /logicTests/
+2026-02-21T19:37:30.805Z - GET /logicTests/2
+2026-02-21T19:39:57.408Z - PUT /bots/1
+2026-02-21T19:39:57.409Z - TypeError: Cannot destructure property 'name' of 'req.body' as it is undefined.
+2026-02-21T19:40:01.089Z - PUT /bots/1
+2026-02-21T19:40:01.090Z - TypeError: Cannot destructure property 'name' of 'req.body' as it is undefined.
+2026-02-21T19:40:25.457Z - GET /bots/1
+2026-02-21T19:40:39.594Z - POST /logicTests/1/attempt
+2026-02-21T19:40:39.612Z - EntityNotFound: Robot no encontrado
+2026-02-21T19:40:51.018Z - GET /bots/1
+2026-02-21T19:44:39.581Z - GET /bots/1
+2026-02-21T19:51:31.626Z - POST /logicTests/1/attempt
+2026-02-21T19:53:10.375Z - POST /logicTests/1/attempt
+2026-02-21T19:53:16.695Z - POST /logicTests/2/attempt
+2026-02-21T19:53:40.212Z - POST /logicTests/22/attempt
+2026-02-21T19:53:40.242Z - EntityNotFound: No se encontró logicTest con ese Id
+2026-02-21T19:53:46.047Z - POST /logicTests/2/attempt
+2026-02-21T19:54:43.741Z - POST /duels/
+2026-02-21T19:54:43.745Z - TypeError: Cannot destructure property 'bot1Id' of 'req.body' as it is undefined.
+2026-02-21T19:55:28.824Z - POST /duels/
+2026-02-21T19:55:28.828Z - TypeError: Cannot destructure property 'bot1Id' of 'req.body' as it is undefined.
+2026-02-21T19:55:46.992Z - POST /duels/1
+2026-02-21T19:55:59.447Z - POST /duels/
+2026-02-21T19:55:59.449Z - TypeError: Cannot destructure property 'bot1Id' of 'req.body' as it is undefined.
+2026-02-21T19:58:16.028Z - POST /duels/
+2026-02-21T19:58:16.032Z - TypeError: Cannot destructure property 'bot1Id' of 'req.body' as it is undefined.
+2026-02-21T20:06:22.286Z - GET /duels/
+2026-02-21T20:06:26.309Z - GET /duels/1
+2026-02-21T20:06:26.312Z - EntityNotFound: no se encontró duel con ese id
+2026-02-21T20:07:15.901Z - GET /duels/
+2026-02-21T20:07:22.596Z - GET /duels/1
+2026-02-21T20:07:22.598Z - EntityNotFound: no se encontró duel con ese id
+2026-02-21T20:08:11.903Z - POST /duels/
+2026-02-21T20:08:11.921Z - EntityNotFound: Robot no encontrado
+2026-02-21T20:08:23.580Z - POST /duels/
+2026-02-21T20:08:23.591Z - Error: Algo o varias cosas salieron malReferenceError: nDuel is not defined
+2026-02-21T20:09:40.042Z - POST /duels/
+2026-02-21T20:10:14.658Z - GET /duels/1
+2026-02-21T20:10:14.666Z - EntityNotFound: no se encontró duel con ese id
+2026-02-21T20:10:18.519Z - GET /duels/0
+2026-02-21T20:12:12.901Z - POST /duels/
+2026-02-21T20:12:26.539Z - POST /duels/
+2026-02-21T20:12:26.584Z - TypeError: Cannot read properties of undefined (reading 'reduce')
+2026-02-21T20:12:50.706Z - POST /duels/
+2026-02-21T20:12:50.710Z - TypeError: Cannot read properties of undefined (reading 'reduce')
+2026-02-21T20:14:36.910Z - POST /bots
+2026-02-21T20:14:45.815Z - POST /duels/
+2026-02-21T20:14:51.976Z - POST /duels/

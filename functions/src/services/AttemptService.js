@@ -1,6 +1,5 @@
 import { EntityNotFoundError } from "../../errors/EntityNotFoundError.js";
 import { AttemptRepository } from "../repositories/AttemptRepository.js";
-import { contador } from "../utils.js";
 import { BotService } from "./BotService.js";
 import { LogicTestService } from "./LogicTestService.js";
 
@@ -8,12 +7,11 @@ class AttemptService {
   constructor(
     atteRepo = new AttemptRepository(),
     botServi = new BotService(),
-    logicTestServi = LogicTestService(),
+    logicTestServi = new LogicTestService(),
   ) {
     this.atteRepo = atteRepo;
     this.botServi = botServi;
     this.logicTestServi = logicTestServi;
-    this.contador = contador();
   }
 
   async getAttemptById(id) {

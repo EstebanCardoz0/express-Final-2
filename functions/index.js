@@ -1,6 +1,8 @@
 import express from "express";
 import { router as botRoutes } from "./src/routes/botRoutes.js";
 import { router as trackRoutes } from "./src/routes/trackRoutes.js";
+import { router as logicTestRoutes } from "./src/routes/logicTestRoutes.js";
+import { router as duelRoutes } from "./src/routes/duelRoutes.js";
 import { saveLog } from "./src/utils.js";
 import { EntityNotFoundError } from "./errors/EntityNotFoundError.js";
 import { OutOfRangeError } from "./errors/OutOfRangeError.js";
@@ -18,6 +20,8 @@ app.use(loggerMiddleware);
 app.use(express.json());
 app.use("/bots", botRoutes);
 app.use("/tracks", trackRoutes);
+app.use("/logicTests", logicTestRoutes);
+app.use("/duels", duelRoutes);
 
 const errorHandler = async (err, req, res, next) => {
   await saveLog(`${err}`);
@@ -32,4 +36,6 @@ const errorHandler = async (err, req, res, next) => {
 
 app.use(errorHandler);
 
-app.listen(PORT, () => {});
+app.listen(PORT, () => {
+  console.log("hola, escuchando en el puerto " + PORT);
+});

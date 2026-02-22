@@ -1,5 +1,5 @@
 import { BotRepository } from "../repositories/BotRepository.js";
-import { contador, acumulador, updateRank } from "../utils.js";
+import { acumulador, updateRank } from "../utils.js";
 import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
 import { Bot } from "../modules/Bot.js";
 import { EntityNotFoundError } from "./../../errors/EntityNotFoundError.js";
@@ -7,10 +7,9 @@ import { EntityNotFoundError } from "./../../errors/EntityNotFoundError.js";
 class BotService {
   constructor(botRepo = new BotRepository()) {
     this.botRepo = botRepo;
-    this.conti = contador();
   }
 
-  createBot(name, generation, processing, memory, modules) {
+  async createBot(name, generation, processing, memory, modules) {
     if (processing < 10 || processing > 200 || memory < 10 || memory > 200) {
       throw new OutOfRangeError();
     }
@@ -21,17 +20,13 @@ class BotService {
     if (contadorPeso.obtenerTotal() > 100) {
       throw new OutOfRangeError("error. El total de peso es mayor a 100");
     }
-    this.conti.aumentar();
 
-    const nbot = new Bot(
-      this.conti.valorActual(),
-      name,
-      generation,
-      processing,
-      memory,
-    );
+    // Calcular el próximo id como el máximo existente + 1
+    const bots = await this.botRepo.getAllBots();
+    const nextId = bots.length ? Math.max(...bots.map((b) => b.id)) + 1 : 1;
+    const nbot = new Bot(nextId, name, generation, processing, memory);
     nbot.modules = modules;
-    return this.botRepo.createBot(nbot);
+    return await this.botRepo.createBot(nbot);
   }
 
   async getAllBots() {
@@ -69,7 +64,7 @@ class BotService {
         throw new OutOfRangeError("error. peso mayor a 100");
       }
     }
-    return this.botRepo.updateBot(id, data);
+    return await this.botRepo.updateBot(id, data);
   }
 
   async updateBotModules(id, modules) {
@@ -81,16 +76,12 @@ class BotService {
       throw new OutOfRangeError("error. El total de peso es mayor a 100");
     }
     await this.updateBot(id, { modules });
-    return this.getBotById(id);
+    return await this.getBotById(id);
   }
 
   async deleteBot(id) {
-    const toDelete = await this.getBotById(id);
-    if (toDelete !== undefined) {
-      return this.botRepo.deleteBot(id);
-    } else {
-      throw new EntityNotFoundError("Bot a borrar no encontrado");
-    }
+    await this.getBotById(id);
+    return await this.botRepo.deleteBot(id);
   }
 
   addXpAndUpdateRank(bot, xpAmount) {

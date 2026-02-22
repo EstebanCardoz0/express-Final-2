@@ -2,6 +2,7 @@ import { OutOfRangeError } from "../../errors/OutOfRangeError.js";
 import { TrainingRepository } from "../repositories/TrainingRepository.js";
 import { BotService } from "./BotService.js";
 import { TrackService } from "./TrackService.js";
+import { readAndParse } from "../utils.js";
 
 class TrainingService {
   constructor(
@@ -14,7 +15,7 @@ class TrainingService {
     this.trackServi = trackServi;
   }
 
-  async trainBot(trackId, botId, id) {
+  async trainBot(trackId, botId) {
     const track = await this.trackServi.getTrackById(trackId);
     const bot = await this.botServi.getBotById(botId);
 
@@ -52,8 +53,14 @@ class TrainingService {
       rank: bot.rank,
     });
 
+    // Generar id automáticamente
+    const trainings = (await this.trainingRepo.getAllTrainings?.())
+      || (await readAndParse(this.trainingRepo.url)).trainings;
+    const { getNextId } = await import("../utils.js");
+    const nextId = getNextId(trainings);
+
     const training = {
-      id: id,
+      id: nextId,
       botId: botId,
       trackId: trackId,
       energyUsed: energyCost,

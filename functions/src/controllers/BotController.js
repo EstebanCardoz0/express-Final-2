@@ -71,7 +71,7 @@ class BotController {
     try {
       const { id } = req.params;
       await this.botSer.deleteBot(id);
-      res.status(204).json();
+      res.status(204).end();
     } catch (error) {
       next(error);
     }

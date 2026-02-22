@@ -13,9 +13,7 @@ class TrackController {
   trainBot = async (req, res, next) => {
     try {
       const { trackId, botId } = req.params;
-      const { id } = req.body;
-
-      const train = await this.trainServi.trainBot(trackId, botId, id);
+      const train = await this.trainServi.trainBot(trackId, botId);
       res.status(201).json(train);
     } catch (error) {
       next(error);

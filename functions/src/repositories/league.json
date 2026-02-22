@@ -1,1 +1,247 @@
-{"bots":[{"id":1,"name":"Bender","generation":"MK-II","processing":50,"memory":100,"battery":100,"load":0,"xp":0,"rank":1,"modules":["doblado","humor"],"baseCapacity":70},{"id":1,"name":"Bot-X Defender","generation":3,"processing":150,"memory":120,"battery":100,"load":0,"xp":0,"rank":1,"modules":[{"name":"Shield Module","weight":25},{"name":"Laser Cannon","weight":30},{"name":"Radar System","weight":20},{"name":"Power Core","weight":15}],"baseCapacity":138},{"id":3,"name":"Generic Bot","generation":3,"processing":100,"memory":100,"battery":100,"load":0,"xp":0,"rank":1,"modules":[{"name":"Standard Module","weight":30},{"name":"Power Core","weight":25}],"baseCapacity":100},{"id":4,"name":"Bot-X Defender","generation":3,"processing":150,"memory":120,"battery":100,"load":0,"xp":0,"rank":1,"modules":[{"name":"Shield Module","weight":25},{"name":"Laser Cannon","weight":30},{"name":"Radar System","weight":20},{"name":"Power Core","weight":15}],"baseCapacity":138}],"tracks":[],"logicTests":[],"trainings":[],"attempts":[],"duels":[]}
+{
+  "bots": [
+    {
+      "id": 1,
+      "name": "Bender",
+      "generation": "MK-II",
+      "processing": 50,
+      "memory": 100,
+      "battery": 85,
+      "load": 0,
+      "xp": 30,
+      "rank": 1,
+      "modules": [
+        "doblado",
+        "humor"
+      ],
+      "baseCapacity": 70
+    },
+    {
+      "id": 3,
+      "name": "Generic Bot",
+      "generation": 3,
+      "processing": 100,
+      "memory": 100,
+      "battery": 36,
+      "load": 0,
+      "xp": 294,
+      "rank": 2,
+      "modules": [
+        {
+          "name": "Standard Module",
+          "weight": 30
+        },
+        {
+          "name": "Power Core",
+          "weight": 25
+        }
+      ],
+      "baseCapacity": 100
+    },
+    {
+      "id": 4,
+      "name": "Bot-X Defender",
+      "generation": 3,
+      "processing": 150,
+      "memory": 120,
+      "battery": 95,
+      "load": 0,
+      "xp": 10,
+      "rank": 1,
+      "modules": [
+        {
+          "name": "Shield Module",
+          "weight": 25
+        },
+        {
+          "name": "Laser Cannon",
+          "weight": 30
+        },
+        {
+          "name": "Radar System",
+          "weight": 20
+        },
+        {
+          "name": "Power Core",
+          "weight": 15
+        }
+      ],
+      "baseCapacity": 138
+    },
+    {
+      "id": 5,
+      "name": "BotX",
+      "generation": 1,
+      "processing": 120,
+      "memory": 80,
+      "battery": 100,
+      "load": 0,
+      "xp": 0,
+      "rank": 1,
+      "modules": [
+        {
+          "name": "Laser",
+          "weight": 30,
+          "bonusType": "attack"
+        },
+        {
+          "name": "AI",
+          "weight": 20,
+          "bonusType": "logic"
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "name": "Robotina bionica",
+      "battery": 100,
+      "load": 0,
+      "xp": 0,
+      "rank": 1
+    },
+    {
+      "id": 7,
+      "name": "robocop",
+      "generation": 1,
+      "processing": 100,
+      "memory": 100,
+      "battery": 90,
+      "load": 0,
+      "xp": 260,
+      "rank": 1,
+      "modules": [
+        {
+          "name": "Ataque Básico",
+          "weight": 20,
+          "bonusType": "attack"
+        },
+        {
+          "name": "Lógica Avanzada",
+          "weight": 30,
+          "bonusType": "logic"
+        }
+      ]
+    }
+  ],
+  "tracks": [
+    {
+      "id": 1,
+      "name": "Circuito Alfa",
+      "complexity": 5,
+      "length": 120,
+      "energyCostBase": 10,
+      "processingDemand": 80
+    },
+    {
+      "id": 2,
+      "name": "Circuito Alfajor",
+      "complexity": 7,
+      "length": 177,
+      "energyCostBase": 4,
+      "processingDemand": 42
+    },
+    {
+      "id": 3,
+      "name": "Circuito Beta",
+      "complexity": 6,
+      "length": 174,
+      "energyCostBase": 44,
+      "processingDemand": 52
+    }
+  ],
+  "logicTests": [
+    {
+      "id": 1,
+      "title": "Test de lógica avanzada",
+      "difficulty": 3,
+      "timeLimit": 60,
+      "baseRewardFormula": "difficulty * 10",
+      "penaltyFormula": "difficulty * 2"
+    },
+    {
+      "id": 2,
+      "title": "logica 222",
+      "difficulty": 4,
+      "timeLimit": 64,
+      "baseRewardFormula": "difficulty * 15",
+      "penaltyFormula": "difficulty * 4"
+    },
+    {
+      "id": 3,
+      "title": "logica 3",
+      "difficulty": 3,
+      "timeLimit": 63,
+      "baseRewardFormula": "difficulty * 13",
+      "penaltyFormula": "difficulty * 3"
+    }
+  ],
+  "trainings": [
+    {
+      "id": 1,
+      "botId": "3",
+      "trackId": "1",
+      "energyUsed": 22,
+      "xpGained": 67
+    }
+  ],
+  "attempts": [
+    {
+      "botId": 1,
+      "logicTestId": "1",
+      "result": "success"
+    },
+    {
+      "botId": 1,
+      "logicTestId": "1",
+      "result": "failed"
+    },
+    {
+      "botId": 1,
+      "logicTestId": "2",
+      "result": "failed"
+    },
+    {
+      "botId": 1,
+      "logicTestId": "2",
+      "result": "failed"
+    }
+  ],
+  "duels": [
+    {
+      "id": 1,
+      "bot1Id": 1,
+      "bot2Id": 3,
+      "result": "bot2 Generic Bot",
+      "xpBot1": 30,
+      "xpBot2": 284,
+      "batteryBot1": 85,
+      "batteryBot2": 41,
+      "performanceBot1": 139.5,
+      "performanceBot2": 179.9
+    },
+    {
+      "id": 2,
+      "bot1Id": 3,
+      "bot2Id": 7,
+      "result": "bot2 robocop",
+      "xpBot1": 294,
+      "xpBot2": 130,
+      "batteryBot1": 36,
+      "batteryBot2": 95,
+      "performanceBot1": 186.4,
+      "performanceBot2": null
+    },
+    {
+      "id": 3,
+      "bot1Id": 4,
+      "bot2Id": 7,
+      "result": "bot2 robocop",
+      "xpBot1": 10,
+      "xpBot2": 260,
+      "batteryBot1": 95,
+      "batteryBot2": 90,
+      "performanceBot1": 212.5,
+      "performanceBot2": null
+    }
+  ]
+}

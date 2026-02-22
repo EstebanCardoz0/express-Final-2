@@ -28,7 +28,7 @@ class BotRepository {
 
   async updateBot(id, datos) {
     const data = await readAndParse(this.url);
-    const botIndex = data.bots.findIndex((d) => d.id === id);
+    const botIndex = data.bots.findIndex((d) => d.id === Number(id));
     if (botIndex < 0) {
       throw new EntityNotFoundError("No se encontró el bot a actualizar");
     }

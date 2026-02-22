@@ -30,15 +30,13 @@ class LogicTestController {
         baseRewardFormula,
         penaltyFormula,
       } = req.body;
-      const logic = new LogicTest(
-        null,
+      const logic = await this.logicTestServi.createLogicTest(
         title,
         difficulty,
         timeLimit,
         baseRewardFormula,
-        penaltyFormula,
+        penaltyFormula
       );
-      await this.logicTestServi.createLogicTest(logic);
       res.status(201).json(logic);
     } catch (error) {
       next(error);
@@ -50,8 +48,7 @@ class LogicTestController {
       const { logicTestId } = req.params;
       const { botId, timeUsed } = req.body;
 
-      const atte = { botId, logicTestId, timeUsed };
-      await this.attemptServi.createAttempt(atte);
+      const atte = await this.attemptServi.createAttempt(botId, logicTestId, timeUsed);
       res.status(200).json({ result: atte.result });
     } catch (error) {
       next(error);

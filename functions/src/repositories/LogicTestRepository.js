@@ -3,6 +3,10 @@ import { readAndParse } from "../utils.js";
 import { DuplicateError } from "../../errors/DuplicateError.js";
 
 class LogicTestRepository {
+  async getAllLogicTests() {
+    const data = await readAndParse(this.url);
+    return data.logicTests;
+  }
   url = "./functions/src/repositories/league.json";
 
   async createLogicTest(logicTest) {

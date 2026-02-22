@@ -1,7 +1,7 @@
 import fs from "fs/promises";
 import { readAndParse } from "../utils.js";
 import { DuplicateError } from "../../errors/DuplicateError.js";
-import { Duel } from "../modules/Duel";
+import { Duel } from "../modules/Duel.js";
 
 class DuelRepository {
   url = "./functions/src/repositories/league.json";

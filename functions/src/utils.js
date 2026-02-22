@@ -1,17 +1,8 @@
 import fs from "fs/promises";
 
-function contador() {
-  let cont = 0;
-
-  return {
-    aumentar() {
-      cont++;
-    },
-    valorActual() {
-      return cont;
-    },
-  };
-}
+const getNextId = (arr) => {
+  return arr.length ? Math.max(...arr.map((e) => e.id)) + 1 : 1;
+};
 
 function acumulador(valorInicial = 0) {
   let total = valorInicial;
@@ -37,10 +28,9 @@ const readAndParse = async (url) => {
   return JSON.parse(await fs.readFile(url));
 };
 
-
 const updateRank = (bot) => {
   let xpNecesaria = 50 + bot.rank ** 2 * 10;
-  
+
   while (bot.xp >= xpNecesaria) {
     bot.rank++;
     bot.xp -= xpNecesaria;
@@ -48,5 +38,4 @@ const updateRank = (bot) => {
   }
 };
 
-
-export { contador, acumulador, saveLog, readAndParse, updateRank, };
+export { acumulador, saveLog, readAndParse, updateRank, getNextId };
