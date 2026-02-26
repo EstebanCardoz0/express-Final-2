@@ -41,16 +41,8 @@ class BotRepository {
   async deleteBot(id) {
     const data = await readAndParse(this.url);
     const withDelete = data.bots.filter((f) => f.id !== Number(id));
-    const length = data.bots.length;
     data.bots = withDelete;
-    await fs.writeFile(this.url, JSON.stringify(data, null, 2));
-    const deleted = data.bots.length < length;
-    if (deleted) {
-      return "Exito al eliminar"
-    } else {
-      throw new Error("Algo salió mal");
-    }
-
+    return await fs.writeFile(this.url, JSON.stringify(data, null, 2));
   }
 }
 
